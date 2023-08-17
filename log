@@ -32,3 +32,20 @@ test.c:204:3: error: implicit declaration of function ‘mergeSortedArrays’ [-
 cc1: all warnings being treated as errors
 Compilation failed
 3fa442d
+Thu 17 Aug 2023 03:07:27 AM UTC: 
+ exercises.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:1:
+exercises.c:78:6: error: redefinition of ‘filterEvenNumbers’
+   78 | int *filterEvenNumbers(int arr[], int size, int *newSize) {
+      |      ^~~~~~~~~~~~~~~~~
+exercises.c:48:6: note: previous definition of ‘filterEvenNumbers’ with type ‘int *(int *, int,  int *)’
+   48 | int *filterEvenNumbers(int arr[], int size, int *newSize) {
+      |      ^~~~~~~~~~~~~~~~~
+test.c: In function ‘test_mergeSort’:
+test.c:204:3: error: implicit declaration of function ‘mergeSortedArrays’ [-Werror=implicit-function-declaration]
+  204 |   mergeSortedArrays(arr1, size1, arr2, size2, result);
+      |   ^~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+a0f2c91
