@@ -136,3 +136,9 @@ test.c:331:19: error: initialization of ‘Nodo *’ {aka ‘struct nodo *’} f
 cc1: all warnings being treated as errors
 Compilation failed
 adb1346
+Thu 17 Aug 2023 03:51:25 AM UTC: 
+ exercises.c | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+ tests:  0|0
+total_score: 70/70
+3ba5aec
