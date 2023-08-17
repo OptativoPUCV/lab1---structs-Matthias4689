@@ -15,3 +15,20 @@ Thu 17 Aug 2023 02:55:45 AM UTC:
  tests:  0|0
 total_score: 70/70
 519138a
+Thu 17 Aug 2023 03:06:39 AM UTC: 
+ exercises.c | 112 ++++++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 59 insertions(+), 53 deletions(-)
+In file included from test.c:1:
+exercises.c:78:6: error: redefinition of ‘filterEvenNumbers’
+   78 | int *filterEvenNumbers(int arr[], int size, int *newSize) {
+      |      ^~~~~~~~~~~~~~~~~
+exercises.c:48:6: note: previous definition of ‘filterEvenNumbers’ with type ‘int *(int *, int,  int *)’
+   48 | int *filterEvenNumbers(int arr[], int size, int *newSize) {
+      |      ^~~~~~~~~~~~~~~~~
+test.c: In function ‘test_mergeSort’:
+test.c:204:3: error: implicit declaration of function ‘mergeSortedArrays’ [-Werror=implicit-function-declaration]
+  204 |   mergeSortedArrays(arr1, size1, arr2, size2, result);
+      |   ^~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+3fa442d
