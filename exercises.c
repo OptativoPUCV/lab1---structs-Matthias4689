@@ -9,6 +9,7 @@ Ejercicio 1: Encuentra el Elemento Mayor
 Descripción: Escribe una función que tome un arreglo de enteros
 y su tamaño, y devuelva el valor más grande del arreglo.
 */
+//int findMax(int arr[], int size) { return 0; }
 int findMax(int arr[], int size) {
     int max = arr[0];
     for (int i = 1; i < size; i++) {
@@ -24,7 +25,14 @@ Ejercicio 2: Invertir un Arreglo
 Descripción: Escribe una función que tome un arreglo y su tamaño, y luego
 invierta el orden de sus elementos.
 */
-void reverseArray(int arr[], int size) {}
+//void reverseArray(int arr[], int size) {}
+void reverseArray(int arr[], int size) {
+    for (int i = 0; i < size / 2; i++) {
+        int aux = arr[i];
+        arr[i] = arr[size - 1 - i];
+        arr[size - 1 - i] = aux;
+    }
+}
 
 /*
 Ejercicio 3: Filtrar Números Pares
@@ -32,7 +40,28 @@ Descripción: Escribe una función que tome un arreglo de enteros
 y su tamaño, y luego devuelva un nuevo arreglo que contenga solo
 los números pares del arreglo original.
 */
-int *filterEvenNumbers(int arr[], int size, int *newSize) { return NULL; }
+//int *filterEvenNumbers(int arr[], int size, int *newSize) { return NULL; }
+int *filterEvenNumbers(int arr[], int size, int *newSize) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            count++;
+        }
+    }
+    
+    int *evenArr = (int *)malloc(count * sizeof(int));
+    int j = 0;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            evenArr[j] = arr[i];
+            j++;
+        }
+    }
+    
+    *newSize = count;
+    return evenArr;
+}
+
 
 /*
 Ejercicio 4: Fusión de dos Arreglos Ordenados
@@ -40,8 +69,35 @@ Descripción: Escribe una función que tome dos arreglos
 ordenados y sus tamaños, y luego fusione estos dos
 arreglos en un tercer arreglo también ordenado.
 */
-void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2,
-                       int result[]) {}
+//void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2,
+//                       int result[]) {}
+void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2, int result[]) {
+    int i = 0, j = 0, k = 0;
+    
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            result[k] = arr1[i];
+            i++;
+        } else {
+            result[k] = arr2[j];
+            j++;
+        }
+        k++;
+    }
+    
+    while (i < size1) {
+        result[k] = arr1[i];
+        i++;
+        k++;
+    }
+    
+    while (j < size2) {
+        result[k] = arr2[j];
+        j++;
+        k++;
+    }
+}
+
 
 /*
 Ejercicio 5: Comprobación de Ordenación
@@ -49,7 +105,28 @@ Descripción: Escribe una función que tome un arreglo y su tamaño,
 y luego devuelva 1 si el arreglo está ordenado en orden ascendente,
   0 si no está ordenado, y -1 si está ordenado en orden descendente.
 */
-int checkSorted(int arr[], int size) { return -2; }
+//int checkSorted(int arr[], int size) { return -2; }
+int checkSorted(int arr[], int size) {
+    int ascending = 1, descending = 1;
+    
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < arr[i - 1]) {
+            ascending = 0;
+        }
+        if (arr[i] > arr[i - 1]) {
+            descending = 0;
+        }
+    }
+    
+    if (ascending) {
+        return 1;
+    } else if (descending) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
 
 /*
 Ejercicio 6: Información de una Biblioteca
@@ -58,7 +135,6 @@ biblioteca, hay libros, y cada libro tiene un autor. Queremos organizar esta
 información utilizando estructuras anidadas en C. Escribe la función para
 inicializar la información de un libro.
 */
-
 typedef struct {
   char nombre[50];
   int anioNacimiento;
@@ -69,9 +145,16 @@ typedef struct {
   Autor autor;
   int anioPublicacion;
 } Libro;
-
+/*
 void inicializarLibro(Libro *libro, const char *titulo, const char *nombreAutor,
                       int anioNacimiento, int anioPublicacion) {}
+*/
+void inicializarLibro(Libro *libro, const char *titulo, const char *nombreAutor, int anioNacimiento, int anioPublicacion) {
+    strcpy(libro->titulo, titulo);
+    strcpy(libro->autor.nombre, nombreAutor);
+    libro->autor.anioNacimiento = anioNacimiento;
+    libro->anioPublicacion = anioPublicacion;
+}
 
 /*
 Ejercicio 7: Lista enlazada de números
@@ -89,4 +172,25 @@ typedef struct nodo {
   struct nodo *siguiente; // puntero al siguiente nodo
 } Nodo;
 
-Nodo *crearListaEnlazada(int arr[], int size) { return NULL; }
+//Nodo *crearListaEnlazada(int arr[], int size) { return NULL; }
+Nodo *crearListaEnlazada(int arr[], int size) {
+    Nodo *head = NULL;
+    Nodo *current = NULL;
+    
+    for (int i = 0; i < size; i++) {
+        Nodo *newNode = (Nodo *)malloc(sizeof(Nodo));
+        newNode->numero = arr[i];
+        newNode->siguiente = NULL;
+        
+        if (head == NULL) {
+            head = newNode;
+            current = newNode;
+        } else {
+            current->siguiente = newNode;
+            current = newNode;
+        }
+    }
+    
+    return head;
+}
+
