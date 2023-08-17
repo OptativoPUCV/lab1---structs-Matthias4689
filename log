@@ -91,3 +91,19 @@ Thu 17 Aug 2023 03:22:19 AM UTC:
  tests:  0|0
 total_score: 70/70
 bc72a66
+Thu 17 Aug 2023 03:35:07 AM UTC: 
+ exercises.c | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
+In file included from test.c:1:
+exercises.c: In function ‘crearListaEnlazada’:
+exercises.c:182:16: error: ‘Nodo’ {aka ‘struct nodo’} has no member named ‘valor’
+  182 |         newNodo->valor = arr[cont];
+      |                ^~
+exercises.c:183:16: error: ‘Nodo’ {aka ‘struct nodo’} has no member named ‘proxNodo’
+  183 |         newNodo->proxNodo = NULL;
+      |                ^~
+exercises.c:189:16: error: ‘Nodo’ {aka ‘struct nodo’} has no member named ‘proxNodo’
+  189 |             aux->proxNodo = newNodo;
+      |                ^~
+Compilation failed
+f4e594a
