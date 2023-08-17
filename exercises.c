@@ -96,7 +96,6 @@ void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2, int result[
     }
 }
 
-
 /*
 Ejercicio 5: Comprobación de Ordenación
 Descripción: Escribe una función que tome un arreglo y su tamaño,
@@ -105,26 +104,28 @@ y luego devuelva 1 si el arreglo está ordenado en orden ascendente,
 */
 //int checkSorted(int arr[], int size) { return -2; }
 int checkSorted(int arr[], int size) {
-    int ascending = 1, descending = 1;
+    int ordenAscendente = 1;
+    int ordenDescendente = 1;
     
-    for (int i = 1; i < size; i++) {
-        if (arr[i] < arr[i - 1]) {
-            ascending = 0;
+    int cont = 1;
+    while (cont < size) {
+        if (arr[cont] < arr[cont - 1]) {
+            ordenAscendente = 0;
         }
-        if (arr[i] > arr[i - 1]) {
-            descending = 0;
+        if (arr[cont] > arr[cont - 1]) {
+            ordenDescendente = 0;
         }
+        cont++;
     }
     
-    if (ascending) {
+    if (ordenAscendente) {
         return 1;
-    } else if (descending) {
+    } else if (ordenDescendente) {
         return -1;
     } else {
         return 0;
     }
 }
-
 
 /*
 Ejercicio 6: Información de una Biblioteca
