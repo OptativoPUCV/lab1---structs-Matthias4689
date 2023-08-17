@@ -11,15 +11,13 @@ y su tamaño, y devuelva el valor más grande del arreglo.
 */
 //int findMax(int arr[], int size) { return 0; }
 int findMax(int arr[], int size) {
-    int maximo = arr[0];
-    int cont = 1;
-    while (cont < size) {
-        if (arr[cont] > maximo) {
-            maximo = arr[cont];
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
         }
-        cont++;
     }
-    return maximo;
+    return max;
 }
 
 /*
@@ -29,12 +27,10 @@ invierta el orden de sus elementos.
 */
 //void reverseArray(int arr[], int size) {}
 void reverseArray(int arr[], int size) {
-    int cont = 0;
-    while (cont < size / 2) {
-        int aux = arr[cont];
-        arr[cont] = arr[size - 1 - cont];
-        arr[size - 1 - cont] = aux;
-        cont++;
+    for (int i = 0; i < size / 2; i++) {
+        int aux = arr[i];
+        arr[i] = arr[size - 1 - i];
+        arr[size - 1 - i] = aux;
     }
 }
 
@@ -75,30 +71,33 @@ arreglos en un tercer arreglo también ordenado.
 */
 //void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2,
 //                       int result[]) {}
-int *filterEvenNumbers(int arr[], int size, int *newSize) {
-    int contPares = 0;
-    int cont = 0;
-    while (cont < size) {
-        if (arr[cont] % 2 == 0) {
-            contPares++;
+void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2, int result[]) {
+    int i = 0, j = 0, k = 0;
+    
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            result[k] = arr1[i];
+            i++;
+        } else {
+            result[k] = arr2[j];
+            j++;
         }
-        cont++;
+        k++;
     }
     
-    int *arrPares = (int *)malloc(contPares * sizeof(int));
-    int indice = 0;
-    cont = 0;
-    while (cont < size) {
-        if (arr[cont] % 2 == 0) {
-            arrPares[indice] = arr[cont];
-            indice++;
-        }
-        cont++;
+    while (i < size1) {
+        result[k] = arr1[i];
+        i++;
+        k++;
     }
     
-    *newSize = contPares;
-    return arrPares;
+    while (j < size2) {
+        result[k] = arr2[j];
+        j++;
+        k++;
+    }
 }
+
 
 /*
 Ejercicio 5: Comprobación de Ordenación
@@ -108,23 +107,20 @@ y luego devuelva 1 si el arreglo está ordenado en orden ascendente,
 */
 //int checkSorted(int arr[], int size) { return -2; }
 int checkSorted(int arr[], int size) {
-    int ordenAscendente = 1;
-    int ordenDescendente = 1;
+    int ascending = 1, descending = 1;
     
-    int cont = 1;
-    while (cont < size) {
-        if (arr[cont] < arr[cont - 1]) {
-            ordenAscendente = 0;
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < arr[i - 1]) {
+            ascending = 0;
         }
-        if (arr[cont] > arr[cont - 1]) {
-            ordenDescendente = 0;
+        if (arr[i] > arr[i - 1]) {
+            descending = 0;
         }
-        cont++;
     }
     
-    if (ordenAscendente) {
+    if (ascending) {
         return 1;
-    } else if (ordenDescendente) {
+    } else if (descending) {
         return -1;
     } else {
         return 0;
@@ -178,25 +174,23 @@ typedef struct nodo {
 
 //Nodo *crearListaEnlazada(int arr[], int size) { return NULL; }
 Nodo *crearListaEnlazada(int arr[], int size) {
-    Nodo *inicio = NULL;
-    Nodo *actual = NULL;
+    Nodo *head = NULL;
+    Nodo *current = NULL;
     
-    int cont = 0;
-    while (cont < size) {
-        Nodo *nuevoNodo = (Nodo *)malloc(sizeof(Nodo));
-        nuevoNodo->numero = arr[cont];
-        nuevoNodo->siguiente = NULL;
+    for (int i = 0; i < size; i++) {
+        Nodo *newNode = (Nodo *)malloc(sizeof(Nodo));
+        newNode->numero = arr[i];
+        newNode->siguiente = NULL;
         
-        if (inicio == NULL) {
-            inicio = nuevoNodo;
-            actual = nuevoNodo;
+        if (head == NULL) {
+            head = newNode;
+            current = newNode;
         } else {
-            actual->siguiente = nuevoNodo;
-            actual = actual->siguiente;
+            current->siguiente = newNode;
+            current = newNode;
         }
-        
-        cont++;
     }
     
-    return inicio;
+    return head;
 }
+

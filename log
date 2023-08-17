@@ -49,3 +49,9 @@ test.c:204:3: error: implicit declaration of function ‘mergeSortedArrays’ [-
 cc1: all warnings being treated as errors
 Compilation failed
 a0f2c91
+Thu 17 Aug 2023 03:10:38 AM UTC: 
+ exercises.c | 112 ++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 53 insertions(+), 59 deletions(-)
+ tests:  0|0
+total_score: 70/70
+cc60726
