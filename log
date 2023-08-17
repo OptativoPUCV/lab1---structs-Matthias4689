@@ -119,3 +119,20 @@ Thu 17 Aug 2023 03:47:21 AM UTC:
  tests:  0|0
 total_score: 70/70
 a876162
+Thu 17 Aug 2023 03:51:12 AM UTC: 
+ exercises.c | 26 +-------------------------
+ 1 file changed, 1 insertion(+), 25 deletions(-)
+In file included from test.c:1:
+exercises.c:175:19: error: expected ‘;’ before ‘struct’
+  175 | dinvokindoivndoknv
+      |                   ^
+      |                   ;
+test.c: In function ‘test_crearListaEnlazada’:
+test.c:331:19: error: implicit declaration of function ‘crearListaEnlazada’; did you mean ‘test_crearListaEnlazada’? [-Werror=implicit-function-declaration]
+  331 |     Nodo* lista = crearListaEnlazada(arr, size);
+      |                   ^~~~~~~~~~~~~~~~~~
+      |                   test_crearListaEnlazada
+test.c:331:19: error: initialization of ‘Nodo *’ {aka ‘struct nodo *’} from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+cc1: all warnings being treated as errors
+Compilation failed
+adb1346
